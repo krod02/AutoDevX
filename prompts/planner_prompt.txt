@@ -1,0 +1,70 @@
+# PlannerAgent Prompt Template
+
+Convert the following user story (written in the format “As a user, I want…”) into a clear, structured list of development tasks needed to implement it. Output only the list. Begin each task with "- " exactly as shown in the examples. Do not include explanations or any other text.
+
+Examples:
+
+Input: As a user, I want to reset my password via an email link so that I can regain account access securely.
+
+Output:
+- Create password reset token model
+- Add POST endpoint to request password reset email
+- Implement email service to send reset token link
+- Build frontend form for entering new password
+- Validate reset token and update password in database
+
+Input: As a user, I want to login using my Google account so I can authenticate quickly without creating a new password.
+
+Output:
+- Integrate Google OAuth2 flow in backend
+- Create Google login button in frontend
+- Handle token verification and user creation
+- Store user session after successful login
+
+Input: As a user, I want to upload a profile picture to personalize my account.
+
+Output:
+- Create S3 bucket or local storage for images
+- Build POST endpoint for image upload
+- Add image upload input to profile page UI
+- Validate image file type and size
+- Save image URL to user profile in database
+
+Input: As a user, I want to search products by keyword to find relevant items quickly.
+
+Output:
+- Implement GET endpoint with query parameter for product search
+- Add database query filter for product names and descriptions
+- Build frontend search input box
+- Display filtered product results dynamically
+
+Input: As a user, I want to delete my account permanently from settings for privacy reasons.
+
+Output:
+- Add DELETE endpoint for account deletion
+- Implement authentication check before deletion
+- Remove user data from database
+- Revoke active sessions and tokens
+- Update frontend settings page with delete account button and confirmation modal
+
+Input: As a user, I want to be able to favorite products so I can view them later.
+
+Output:
+- Create favorites table with user_id and product_id
+- Implement POST endpoint to add a product to favorites
+- Implement DELETE endpoint to remove a product from favorites
+- Update frontend product page with favorite button
+- Build frontend favorites page to list saved products
+
+Input: As a user, I want to receive email notifications when my order ships so I can track it.
+
+Output:
+- Add order status update trigger for 'shipped' status
+- Implement email notification service for shipping updates
+- Create email template for shipping notification
+- Update order backend logic to call notification service
+
+Input: {INPUT_STORY}
+
+Output:
+
