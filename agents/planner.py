@@ -23,17 +23,19 @@ class PlannerAgent:
         Generate a list of development tasks given a user story.
         Returns a list of task strings.
         """
-        # Replace placeholder with user story
-        final_prompt = self.prompt_template.replace("{INPUT_STORY}", user_story)
+        # Input validation
+        if not user_story or not user_story.strip():
+            return []
 
-        # Generate output
+        final_prompt = self.prompt_template.replace("{INPUT_STORY}", user_story.strip())
+
         result = self.generator(final_prompt, max_length=512)
-        output_text = result[0]["generated_text"]
+        output_text = result[0]["generated_text"].strip()
 
-        # Parse output into list of tasks
+        # Clean task parsing
         tasks = []
-        for line in output_text.split("- "):
-            line = line.strip()
+        for line in output_text.splitlines():
+            line = line.strip("-• ").strip()
             if line:
                 tasks.append(line)
 
